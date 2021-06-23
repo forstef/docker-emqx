@@ -1,0 +1,27 @@
+version: "3.9"
+services:
+    emqx:
+        restart: always
+        # image: emqx/emqx:4.2.11
+        build: ./emqx/Dockerfile.dockerfile
+
+        ports: 
+            - 1883:1883
+            - 8083:8083
+            - 18083:18083
+
+        environment:
+            - TZ=Asia/Shanghai
+
+    emqx_ordered:
+        restart: always
+        image: emqx/emqx:4.2.11
+
+        ports: 
+            - 1884:1883
+            - 8084:8083
+            - 18084:18083
+        volumes: 
+            - ./emqx/emqx_ordered.conf:/opt/emqx/etc/emqx.conf
+        environment:
+            - TZ=Asia/Shanghai
