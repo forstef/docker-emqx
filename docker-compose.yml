@@ -3,7 +3,7 @@ services:
     emqx:
         restart: always
         # image: emqx/emqx:4.2.11
-        build: ./emqx/Dockerfile.dockerfile
+        build: ./emqx/
 
         ports: 
             - 1883:1883
